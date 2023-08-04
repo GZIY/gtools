@@ -5,14 +5,14 @@ import (
 	"testing"
 )
 
-type testCase struct {
-	name        string
-	originCap   int
-	enqueueLoop int
-	expectCap   int
-}
-
 func TestShrink(t *testing.T) {
+	type testCase struct {
+		name        string
+		originCap   int
+		enqueueLoop int
+		expectCap   int
+	}
+
 	testCases := []testCase{
 		{
 			name:        "小于等于64",

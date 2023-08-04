@@ -6,18 +6,18 @@ import (
 	"testing"
 )
 
-type typeCase struct {
-	name      string
-	slice     []int
-	index     int
-	wantSlice []int
-	wantVal   int
-	wantErr   error
-}
-
 func TestDelete(t *testing.T) {
+	type testCase struct {
+		name      string
+		slice     []int
+		index     int
+		wantSlice []int
+		wantVal   int
+		wantErr   error
+	}
+
 	// 若干 case 例子
-	testCases := []typeCase{
+	testCases := []testCase{
 		{
 			name:      "index 0",
 			slice:     []int{123, 100},
