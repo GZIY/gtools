@@ -13,16 +13,11 @@ func Delete[T any](src []T, idx int) ([]T, T, error) {
 		return nil, zero, errs.NewErrIndexOutOfRange(length, idx)
 	}
 
-	// 遍历切片，将不是要删除所以位置的元素依次覆盖源切片
+	// 从删除位置遍历切片，将后续元素往前覆盖一个位置
 	res := src[idx]
-	cover := 0
-	for i, v := range src {
-		if i != idx {
-			src[cover] = v
-			cover++
-		}
+	for i := idx; i < len(src)-1; i++ {
+		src[idx] = src[idx+1]
 	}
 
-	src = src[:cover]
-	return src, res, nil
+	return src[:len(src)-1], res, nil
 }
