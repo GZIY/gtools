@@ -5,6 +5,14 @@ import (
 	"github.com/GZIY/gtools/slice"
 )
 
+var (
+	// 保证 ArrayList 实现了 List 接口 的两种写法
+	// ArrayList 赋值给 List，通过编译器来保证 ArrayList 实现了 List 接口
+	// 如果 ArrayList 没实现 List 接口，则报红，编译不通过，你好
+	_ List[any] = &ArrayList[any]{}
+	_ List[any] = (*ArrayList[any])(nil)
+)
+
 type ArrayList[T any] struct {
 	vals []T
 }

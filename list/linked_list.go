@@ -2,6 +2,10 @@ package list
 
 import "github.com/GZIY/gtools/errs"
 
+var (
+	_ List[any] = &LinkedList[any]{}
+)
+
 // 双向循环链表的节点
 type node[T any] struct {
 	prev *node[T]
